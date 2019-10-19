@@ -34,7 +34,7 @@ const menuItems = [
     label: 'Todas as transações'
   },
   {
-    path: 'add-transaction',
+    path: '/add-transaction',
     label: 'Nova transação'
   }
 ]
