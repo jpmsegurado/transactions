@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 const Page = styled.div`
-  padding: 20px;
+  padding: 30px;
 
   h2 {
     margin: 0;
