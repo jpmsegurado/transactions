@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Menu = styled.ul`
@@ -8,6 +9,11 @@ const Menu = styled.ul`
   background-color: #efefef;
   width: 100%;
   height: 100%;
+
+  > a {
+    text-decoration: none;
+    color: #000;
+  }
 `;
 
 const MenuItem = styled.li`
@@ -28,12 +34,12 @@ class MenuComponent extends Component {
   render () {
     return (
       <Menu>
-        <MenuItem>
-          Todas as transações
-        </MenuItem>
-        <MenuItem>
-          Nova transação
-        </MenuItem>
+        <Link to="/">
+          <MenuItem>Todas as transações</MenuItem>
+        </Link>
+        <Link to="/add-transaction">
+          <MenuItem>Nova transação</MenuItem>
+        </Link>
       </Menu>
     );
   }
