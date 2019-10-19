@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 
 const Menu = styled.ul`
@@ -27,22 +28,32 @@ const MenuItem = styled.li`
     transition: .3s;
   }
 `
-
+const menuItems = [
+  {
+    path: '/',
+    label: 'Todas as transações'
+  },
+  {
+    path: 'add-transaction',
+    label: 'Nova transação'
+  }
+]
 
 
 class MenuComponent extends Component {
-  render () {
+  render() {
     return (
       <Menu>
-        <Link to="/">
-          <MenuItem>Todas as transações</MenuItem>
-        </Link>
-        <Link to="/add-transaction">
-          <MenuItem>Nova transação</MenuItem>
-        </Link>
+        {menuItems.map((item) => (
+          <Link to={item.path} key={item.path}>
+            <MenuItem 
+              className={this.props.location.pathname === item.path ? 'active': ''}>
+              {item.label}
+            </MenuItem>
+          </Link>))}
       </Menu>
     );
   }
 }
 
-export default MenuComponent;
+export default withRouter(MenuComponent);

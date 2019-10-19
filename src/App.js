@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { ADD_TRANSACTION } from './actions/transactionsActions';
 import {
   BrowserRouter as Router,
   Switch,
@@ -30,7 +28,6 @@ const MenuWrapper = styled.div`
 `;
 
 class App extends Component {
-
   render() {
     return (
       <AppWrapper>
@@ -51,16 +48,6 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = (store) => {
-  return {
-    total: store.transactions.total
-  }
-}
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addTransaction: (transaction) => dispatch(ADD_TRANSACTION(transaction))
-  }
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default App;
