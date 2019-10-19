@@ -6,6 +6,7 @@ This is a project for a review process challenge, and it's basically a transacti
 - `react` for the components
 - `redux` to share state beetween components
 - `lodash/fp` to get only the functions necessary from `lodash`
+- `styled-components` to add CSS encapsulation
 
 # How do I run the project
 - Clone the project
