@@ -2,7 +2,11 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 const Page = styled.div`
-  padding: 10px;
+  padding: 20px;
+
+  h2 {
+    margin: 0;
+  }
 `;
 
 export default class PageComponent extends Component {
