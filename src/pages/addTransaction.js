@@ -2,73 +2,13 @@ import React, { Component } from 'react';
 import PageComponent from '../components/page';
 import styled from 'styled-components';
 import IntlCurrencyInput from "react-intl-currency-input"
-
-const Form = styled.form`
-  width: 300px;
-  margin-top: 20px;
-`;
-
-const FieldWrapper = styled.div`
-  width: 100%;
-  margin-bottom: 10px;
-
-  label, input {
-    display: block;
-    width: 100%;
-  }
-
-  label {
-    padding: 10px 0;
-  }
-
-  input {
-    padding: 10px;
-    border-radius: 5px;
-    border: solid 1px #ccc;
-    outline: transparent;
-
-    &:focus, &:hover {
-      border: solid 1px #777;
-      transition: .3s;
-    }
-
-    &.money {
-      text-align: right;
-    }
-  }
-`;
-
-const SubmitButton = styled.button`
-  display: block;
-  width: 100%;
-  background-color: #AA612D;
-  border: 0;
-  padding: 10px;
-  color: #fff;
-  margin-top: 20px;
-  font-size: 17px;
-  font-weight: bold;
-  outline: transparent;
-  cursor: pointer;
-
-  &:active {
-    background-color: #B84D14;
-  }
-`;
-
-const currencyConfig = {
-  locale: "pt-BR",
-  formats: {
-    number: {
-      BRL: {
-        style: "currency",
-        currency: "BRL",
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2,
-      },
-    },
-  },
-};
+import {
+  Form,
+  FieldWrapper,
+  SubmitButton,
+  ErrorMessage,
+  currencyConfig
+} from '../components/form-elements';
 
 export default class AddTransactionsPage extends Component {
 
@@ -87,29 +27,54 @@ export default class AddTransactionsPage extends Component {
         [fieldName]: fieldValue
       }
     })
+
+    if (fieldName === 'description') {
+      this.setState({
+        showDescriptionError: fieldValue.length === 0
+      })
+    }
+
+    if (fieldName === 'value') {
+      this.setState({
+        showValueError: fieldValue === 0
+      })
+    }
   }
 
   render () {
+    const { showDescriptionError, showValueError } = this.state;
+
     return (
       <PageComponent>
         <h2>Nova Transação</h2>
         <Form onSubmit={this.onSubmit.bind(this)}>
-          <FieldWrapper>
+          <FieldWrapper className={showDescriptionError ? 'error' : ''}>
             <label>Descrição</label>
             <input
               onChange={(evt) => this.changeFieldValue('description', evt.target.value)}
             />
           </FieldWrapper>
 
-          <FieldWrapper>
+          {
+            showDescriptionError &&
+            <ErrorMessage>Por favor preencha o campo descrição</ErrorMessage>
+          }
+
+          <FieldWrapper className={showValueError ? 'error' : ''}>
             <label>Valor</label>
             <IntlCurrencyInput
               className="money"
               currency="BRL"
               config={currencyConfig}
               onChange={(evt, value) => this.changeFieldValue('value', value)}
+              onBlur={(evt, value) => this.changeFieldValue('value', value)}
             />
           </FieldWrapper>
+
+          {
+            showValueError &&
+            <ErrorMessage>O valor não pode ser zero.</ErrorMessage>
+          }
 
           <SubmitButton type="submit">Adicionar</SubmitButton>
         </Form>

@@ -21,6 +21,7 @@ const MenuItem = styled.li`
   display: block;
   padding: 20px;
   color: #fff;
+  user-select: none;
 
   &:hover, &.active {
     background-color: #FFFFFF44;
@@ -64,7 +65,7 @@ class MenuComponent extends Component {
               </MenuItem>
             </Link>))}
         </Menu>
-        </Fragment>
+      </Fragment>
     );
   }
 }
