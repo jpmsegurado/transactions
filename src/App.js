@@ -5,7 +5,6 @@ import {
   Route
 } from "react-router-dom";
 import MenuComponent from './components/menu';
-import HeaderComponent from './components/header';
 import styled from 'styled-components';
 import TransactionsPage from './pages/transactions';
 import AddTransactionsPage from './pages/addTransaction';
@@ -18,12 +17,12 @@ const AppWrapper = styled.div`
 `;
 
 const PagesWrapper = styled.div`
-  width: calc(100% - 250px);
+  width: calc(100% - 300px);
   height: calc(100% - 60px);
 `;
 
 const MenuWrapper = styled.div`
-  width: 250px;
+  width: 300px;
   height: calc(100% - 60px);
 `;
 
@@ -32,7 +31,6 @@ class App extends Component {
     return (
       <AppWrapper>
         <Router>
-          <HeaderComponent />
           <MenuWrapper>
             <MenuComponent />
           </MenuWrapper>

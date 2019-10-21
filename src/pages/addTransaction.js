@@ -41,7 +41,7 @@ const FieldWrapper = styled.div`
 const SubmitButton = styled.button`
   display: block;
   width: 100%;
-  background-color: #FF6D1D;
+  background-color: #AA612D;
   border: 0;
   padding: 10px;
   color: #fff;
