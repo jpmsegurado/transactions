@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PageComponent from '../components/page';
 import styled from 'styled-components';
+import IntlCurrencyInput from "react-intl-currency-input"
 
 const Form = styled.form`
   width: 300px;
@@ -30,6 +31,10 @@ const FieldWrapper = styled.div`
       border: solid 1px #777;
       transition: .3s;
     }
+
+    &.money {
+      text-align: right;
+    }
   }
 `;
 
@@ -50,6 +55,20 @@ const SubmitButton = styled.button`
     background-color: #B84D14;
   }
 `;
+
+const currencyConfig = {
+  locale: "pt-BR",
+  formats: {
+    number: {
+      BRL: {
+        style: "currency",
+        currency: "BRL",
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      },
+    },
+  },
+};
 
 export default class AddTransactionsPage extends Component {
 
@@ -84,9 +103,11 @@ export default class AddTransactionsPage extends Component {
 
           <FieldWrapper>
             <label>Valor</label>
-            <input
-              type="tel"
-              onChange={(evt) => this.changeFieldValue('value', evt.target.value)}
+            <IntlCurrencyInput
+              className="money"
+              currency="BRL"
+              config={currencyConfig}
+              onChange={(evt, value) => this.changeFieldValue('value', value)}
             />
           </FieldWrapper>
 
