@@ -20,7 +20,6 @@ function addTransaction (transaction, state) {
   const transactions = [...state.transactions];
   transactions.push(transaction);
   const total = sumBy(t => t.value)(transactions);
-  console.log(total)
   return {
     ...state,
     transactions,

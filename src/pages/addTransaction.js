@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PageComponent from '../components/page';
-import styled from 'styled-components';
+import { connect } from 'react-redux';
 import IntlCurrencyInput from "react-intl-currency-input"
 import {
   Form,
@@ -9,8 +9,9 @@ import {
   ErrorMessage,
   currencyConfig
 } from '../components/form-elements';
+import { ADD_TRANSACTION } from '../actions/transactionsActions';
 
-export default class AddTransactionsPage extends Component {
+class AddTransactionsPage extends Component {
 
   state = {
     form: {}
@@ -18,6 +19,18 @@ export default class AddTransactionsPage extends Component {
 
   onSubmit (event) {
     event.preventDefault();
+    const { description = '', value = 0 } = this.state.form;
+    if (value === 0 || description.length === 0) {
+      return this.setState({
+        showDescriptionError: description.length === 0,
+        showValueError: value === 0
+      })
+    }
+
+    this.setState({ disabled: true });
+    const transaction = { value, description };
+    this.props.addTransaction(transaction);
+
   }
 
   changeFieldValue (fieldName, fieldValue) {
@@ -82,3 +95,12 @@ export default class AddTransactionsPage extends Component {
     )
   }
 }
+
+const mapStateToProps = {};
+const mapDispatchToProps = (dispatch) => ({
+  addTransaction: (transaction) => {
+    return dispatch(ADD_TRANSACTION(transaction))
+  }
+});
+
+export default connect(null, mapDispatchToProps)(AddTransactionsPage)
