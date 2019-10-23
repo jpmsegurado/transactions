@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import MenuComponent from './components/menu';
 import styled from 'styled-components';
 import TransactionsPage from './pages/transactions';
-import AddTransactionsPage from './pages/addTransaction';
+import AddTransactionsPage from './pages/add-transactions';
 
 const AppWrapper = styled.div`
   width: 100vw;

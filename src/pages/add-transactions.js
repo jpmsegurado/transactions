@@ -59,22 +59,24 @@ class AddTransactionsPage extends Component {
 
     return (
       <PageComponent title="Nova Transação">
-        <Form onSubmit={this.onSubmit.bind(this)}>
+        <Form id="add-transaction-form" onSubmit={this.onSubmit.bind(this)}>
           <FieldWrapper className={showDescriptionError ? 'error' : ''}>
             <label>Descrição</label>
             <input
+              name="description"
               onChange={(evt) => this.changeFieldValue('description', evt.target.value)}
             />
           </FieldWrapper>
 
           {
             showDescriptionError &&
-            <ErrorMessage>Por favor preencha o campo descrição</ErrorMessage>
+            <ErrorMessage className="error-message">Por favor preencha o campo descrição</ErrorMessage>
           }
 
           <FieldWrapper className={showValueError ? 'error' : ''}>
             <label>Valor</label>
             <IntlCurrencyInput
+              name="value"
               className="money"
               currency="BRL"
               config={currencyConfig}
@@ -85,10 +87,10 @@ class AddTransactionsPage extends Component {
 
           {
             showValueError &&
-            <ErrorMessage>O valor não pode ser zero.</ErrorMessage>
+            <ErrorMessage className="error-message">O valor não pode ser zero.</ErrorMessage>
           }
 
-          <SubmitButton type="submit">Adicionar</SubmitButton>
+          <SubmitButton className="submit-button" type="submit">Adicionar</SubmitButton>
         </Form>
       </PageComponent>
     )
@@ -101,4 +103,4 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
-export default connect(null, mapDispatchToProps)(withRouter(AddTransactionsPage))
+export default withRouter(connect(null, mapDispatchToProps)(AddTransactionsPage))
