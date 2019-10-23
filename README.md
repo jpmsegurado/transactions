@@ -5,8 +5,10 @@ This is a project for a review process challenge, and it's basically a transacti
 # What libs did I use
 - `react` for the components
 - `redux` to share state beetween components
+- `react-router-dom` for navigations links and history
 - `lodash/fp` to get only the functions necessary from `lodash`
 - `styled-components` to add CSS encapsulation
+- `styled-icons` for an icon lib who works well with `styled-components`
 
 # How do I run the project
 - Clone the project
