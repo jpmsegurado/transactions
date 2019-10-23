@@ -8,7 +8,7 @@ const Footer = styled.div`
   position: absolute;
   width: 100%;
   bottom: 0;
-  background-color: #ececec;
+  background-color: #ddd;
   justify-content: flex-end;
   font-size: 20px;
 
