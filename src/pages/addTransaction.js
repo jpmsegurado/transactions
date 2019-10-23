@@ -9,6 +9,7 @@ import {
   ErrorMessage,
   currencyConfig
 } from '../components/form-elements';
+import { withRouter } from 'react-router-dom';
 import { ADD_TRANSACTION } from '../actions/transactionsActions';
 
 class AddTransactionsPage extends Component {
@@ -27,10 +28,9 @@ class AddTransactionsPage extends Component {
       })
     }
 
-    this.setState({ disabled: true });
     const transaction = { value, description };
     this.props.addTransaction(transaction);
-
+    this.props.history.push('/');
   }
 
   changeFieldValue (fieldName, fieldValue) {
@@ -96,11 +96,10 @@ class AddTransactionsPage extends Component {
   }
 }
 
-const mapStateToProps = {};
 const mapDispatchToProps = (dispatch) => ({
   addTransaction: (transaction) => {
     return dispatch(ADD_TRANSACTION(transaction))
   }
 });
 
-export default connect(null, mapDispatchToProps)(AddTransactionsPage)
+export default connect(null, mapDispatchToProps)(withRouter(AddTransactionsPage))
