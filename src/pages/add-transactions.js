@@ -76,6 +76,7 @@ class AddTransactionsPage extends Component {
           <FieldWrapper className={showValueError ? 'error' : ''}>
             <label>Valor</label>
             <IntlCurrencyInput
+              type="tel"
               name="value"
               className="money"
               currency="BRL"
