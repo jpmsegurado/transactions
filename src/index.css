@@ -11,3 +11,7 @@ code {
 * {
   box-sizing: border-box;
 }
+
+html {
+  overflow: hidden;
+}

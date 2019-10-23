@@ -1,9 +1,11 @@
 import { ACTIONS } from '../actions/transactionsActions';
 import sumBy from 'lodash/fp/sumBy';
 
+const list = JSON.parse(localStorage.getItem('transactions') || '[]');
+
 const initialState = {
-  transactions: JSON.parse(localStorage.getItem('transactions') || '[]'),
-  total: 0
+  transactions: list,
+  total: sumBy(t => t.value)(list)
 };
 
 export const transactionsReducer = (state = initialState, action) => {

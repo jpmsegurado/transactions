@@ -18,12 +18,14 @@ const AppWrapper = styled.div`
 
 const PagesWrapper = styled.div`
   width: calc(100% - 300px);
-  height: calc(100% - 60px);
+  height: 100%;
+  overflow: auto;
+  position: relative;
 `;
 
 const MenuWrapper = styled.div`
   width: 300px;
-  height: calc(100% - 60px);
+  height: 100%;
 `;
 
 class App extends Component {
