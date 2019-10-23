@@ -36,6 +36,7 @@ const ListWrapper = styled.div`
 const OverridePageComponent = styled(PageComponent)`
   height: calc(100% - 64px);
   position: absolute;
+  width: 100%;
 `;
 
 class TransactionsPage extends Component {
