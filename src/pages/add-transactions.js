@@ -10,7 +10,7 @@ import {
   currencyConfig
 } from '../components/form-elements';
 import { withRouter } from 'react-router-dom';
-import { ADD_TRANSACTION } from '../actions/transactionsActions';
+import { ADD_TRANSACTION } from '../actions/transactions-actions';
 
 class AddTransactionsPage extends Component {
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { SCREEN_SIZES } from '../common';
 import { connect } from 'react-redux';
-import { TOGGLE_MENU } from '../actions/menuActions';
+import { TOGGLE_MENU } from '../actions/menu-actions';
 import { Menu } from 'styled-icons/boxicons-regular/Menu';
 import styled from 'styled-components';
 

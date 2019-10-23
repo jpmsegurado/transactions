@@ -4,7 +4,7 @@ import { Close } from 'styled-icons/evil/Close';
 import { SCREEN_SIZES } from '../common';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { TOGGLE_MENU } from '../actions/menuActions';
+import { TOGGLE_MENU } from '../actions/menu-actions';
 
 const Menu = styled.ul`
   display: block;

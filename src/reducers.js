@@ -1,6 +1,6 @@
-import { transactionsReducer } from './reducers/transactionsReducer';
+import { transactionsReducer } from './reducers/transactions-reducer';
+import { menuReducer } from './reducers/menu-reducer';
 import { combineReducers } from 'redux';
-import { menuReducer } from './reducers/menuReducer';
 
 export const Reducers = combineReducers({
   transactions: transactionsReducer,

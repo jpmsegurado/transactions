@@ -1,4 +1,4 @@
-import { ACTIONS } from '../actions/menuActions';
+import { ACTIONS } from '../actions/menu-actions';
 
 const initialState = {
   showMenu: false

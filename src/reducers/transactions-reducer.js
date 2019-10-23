@@ -1,4 +1,4 @@
-import { ACTIONS } from '../actions/transactionsActions';
+import { ACTIONS } from '../actions/transactions-actions';
 import sumBy from 'lodash/fp/sumBy';
 
 const list = JSON.parse(localStorage.getItem('transactions') || '[]');

@@ -22,7 +22,7 @@ const Card = styled.div`
   }
 `;
 
-export class TransactionCard extends Component {
+export default class TransactionCard extends Component {
   render () {
     const { transaction } = this.props;
     const formattedValue = formatCurrency(transaction.value);

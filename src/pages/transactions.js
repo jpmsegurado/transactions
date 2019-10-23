@@ -1,11 +1,11 @@
 import React, { Component, Fragment } from 'react';
-import { TransactionCard } from '../components/transaction-card';
 import { connect } from 'react-redux';
 import { SCREEN_SIZES } from '../common';
 import PageComponent from '../components/page';
 import styled from 'styled-components';
 import orderBy from 'lodash/fp/orderBy';
 import TransactionsFooter from '../components/transactions-footer';
+import TransactionCard from '../components/transaction-card';
 
 const ItemWrapper = styled.div`
   width: calc((100% - 40px) / 3);
@@ -49,6 +49,10 @@ class TransactionsPage extends Component {
     return (
       <Fragment>
         <OverridePageComponent title="Transações">
+          {
+            this.props.transactions.length === 0 &&
+            <p id="empty-state-message">Você ainda não possui transações</p>
+          }
           <ListWrapper>
             {this.props.transactions.map((transaction) => (
               <ItemWrapper key={transaction.datetime}>
