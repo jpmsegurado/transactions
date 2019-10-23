@@ -10,6 +10,11 @@ const Card = styled.div`
 
   h3 {
     margin: 0;
+    font-size: 19px;
+    line-height: 22px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   p {
