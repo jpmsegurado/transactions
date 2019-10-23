@@ -1,6 +1,10 @@
 import React, { Component, Fragment } from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import { Close } from 'styled-icons/evil/Close';
+import { SCREEN_SIZES } from '../common';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
+import { TOGGLE_MENU } from '../actions/menuActions';
 
 const Menu = styled.ul`
   display: block;
@@ -37,6 +41,25 @@ const Header = styled.h1`
   line-height: 60px;
   color: #fff;
   text-align: center;
+
+  @media (max-width: ${SCREEN_SIZES.SM_MAX}) {
+    text-align: left;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+  }
+`;
+
+const Icon = styled(Close)`
+  color: #fff;
+  width: 30px;
+  height: 30px;
+  margin-left: auto;
+  cursor: pointer;
+
+  @media (min-width: ${SCREEN_SIZES.DESKTOP_MIN}) {
+    display: none;
+  }
 `;
 
 const menuItems = [
@@ -55,10 +78,13 @@ class MenuComponent extends Component {
   render() {
     return (
       <Fragment>
-        <Header>Transactions App</Header>
+        <Header>
+          Transactions App
+          <Icon onClick={() => this.props.toggleMenu(false)}/>
+        </Header>
         <Menu>
           {menuItems.map((item) => (
-            <Link to={item.path} key={item.path}>
+            <Link to={item.path} key={item.path} onClick={() => this.props.toggleMenu(false)}>
               <MenuItem
                 className={this.props.location.pathname === item.path ? 'active': ''}>
                 {item.label}
@@ -70,4 +96,8 @@ class MenuComponent extends Component {
   }
 }
 
-export default withRouter(MenuComponent);
+const mapDispatchToProps = (dispatch) => ({
+  toggleMenu: (value) => dispatch(TOGGLE_MENU(value))
+})
+
+export default connect(null, mapDispatchToProps)(withRouter(MenuComponent));

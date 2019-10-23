@@ -10,7 +10,7 @@ import TransactionsFooter from '../components/transactions-footer';
 const ItemWrapper = styled.div`
   width: calc((100% - 40px) / 3);
 
-  @media screen and (max-width: ${SCREEN_SIZES.SM}) {
+  @media screen and (max-width: ${SCREEN_SIZES.SM_MAX}) {
     width: 100%;
   }
 `;
@@ -26,7 +26,7 @@ const ListWrapper = styled.div`
       margin-left: 20px;
     }
 
-    @media screen and (max-width: ${SCREEN_SIZES.SM}) {
+    @media screen and (max-width: ${SCREEN_SIZES.SM_MAX}) {
       &:nth-child(3n), &:nth-child(3n - 1) {
         margin-left: 0px;
       }
@@ -38,14 +38,17 @@ const OverridePageComponent = styled(PageComponent)`
   height: calc(100% - 64px);
   position: absolute;
   width: 100%;
+
+  @media (max-width: ${SCREEN_SIZES.SM_MAX}) {
+    height: calc(100% - 124px);
+  }
 `;
 
 class TransactionsPage extends Component {
   render () {
     return (
       <Fragment>
-        <OverridePageComponent>
-          <h2>Transações</h2>
+        <OverridePageComponent title="Transações">
           <ListWrapper>
             {this.props.transactions.map((transaction) => (
               <ItemWrapper key={transaction.datetime}>
@@ -62,12 +65,12 @@ class TransactionsPage extends Component {
   }
 }
 
-const mapStateToProps = (store) => {
-  let transactions = [...store.transactions.transactions];
+const mapStateToProps = (state) => {
+  let transactions = [...state.transactions.transactions];
   transactions = orderBy(['datetime'], ['desc'])(transactions);
   return {
     transactions,
-    total: store.transactions.total
+    total: state.transactions.total
   }
 };
 

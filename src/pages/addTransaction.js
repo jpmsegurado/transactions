@@ -58,8 +58,7 @@ class AddTransactionsPage extends Component {
     const { showDescriptionError, showValueError } = this.state;
 
     return (
-      <PageComponent>
-        <h2>Nova Transação</h2>
+      <PageComponent title="Nova Transação">
         <Form onSubmit={this.onSubmit.bind(this)}>
           <FieldWrapper className={showDescriptionError ? 'error' : ''}>
             <label>Descrição</label>

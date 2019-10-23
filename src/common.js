@@ -4,5 +4,6 @@ export function formatCurrency (value) {
 }
 
 export const SCREEN_SIZES = {
-  SM: '720px'
+  SM_MAX: '720px',
+  DESKTOP_MIN: '721px'
 };

@@ -5,6 +5,7 @@ import {
   Route
 } from "react-router-dom";
 import { SCREEN_SIZES } from './common';
+import { connect } from 'react-redux';
 import MenuComponent from './components/menu';
 import styled from 'styled-components';
 import TransactionsPage from './pages/transactions';
@@ -23,7 +24,7 @@ const PagesWrapper = styled.div`
   overflow: auto;
   position: relative;
 
-  @media (max-width: ${SCREEN_SIZES.SM}) {
+  @media (max-width: ${SCREEN_SIZES.SM_MAX}) {
     width: 100%;
   }
 `;
@@ -32,11 +33,22 @@ const MenuWrapper = styled.div`
   width: 300px;
   height: 100%;
 
-  @media (max-width: ${SCREEN_SIZES.SM}) {
+  @media (max-width: ${SCREEN_SIZES.SM_MAX}) {
     position: absolute;
     left: -300px;
     top: 0;
     bottom: 0;
+    z-index: 3;
+
+    &.show {
+      transform: translateX(300px);
+      transition: .3s;
+    }
+
+    &.hide {
+      transform: translateX(0);
+      transition: .3s;
+    }
   }
 `;
 
@@ -45,7 +57,7 @@ class App extends Component {
     return (
       <AppWrapper>
         <Router>
-          <MenuWrapper>
+          <MenuWrapper className={this.props.showMenu ? 'show' : 'hide'}>
             <MenuComponent />
           </MenuWrapper>
           <PagesWrapper>
@@ -60,6 +72,8 @@ class App extends Component {
   }
 }
 
+const mapStateToProps = (state) => ({
+  showMenu: state.menu.showMenu
+})
 
-
-export default App;
+export default connect(mapStateToProps)(App);

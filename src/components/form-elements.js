@@ -1,8 +1,13 @@
 import styled from 'styled-components';
+import { SCREEN_SIZES } from '../common';
 
 export const Form = styled.form`
   width: 300px;
   margin-top: 20px;
+
+  @media (max-width: ${SCREEN_SIZES.SM_MAX}) {
+    width: 100%;
+  }
 `;
 
 export const FieldWrapper = styled.div`
