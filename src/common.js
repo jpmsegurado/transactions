@@ -2,3 +2,7 @@ export function formatCurrency (value) {
   const formatter = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
   return formatter.format(value);
 }
+
+export const SCREEN_SIZES = {
+  SM: '720px'
+};

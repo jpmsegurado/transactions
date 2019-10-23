@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { TransactionCard } from '../components/transaction-card';
 import { connect } from 'react-redux';
+import { SCREEN_SIZES } from '../common';
 import PageComponent from '../components/page';
 import styled from 'styled-components';
 import orderBy from 'lodash/fp/orderBy';
@@ -9,7 +10,7 @@ import TransactionsFooter from '../components/transactions-footer';
 const ItemWrapper = styled.div`
   width: calc((100% - 40px) / 3);
 
-  @media screen and (max-width: 720px) {
+  @media screen and (max-width: ${SCREEN_SIZES.SM}) {
     width: 100%;
   }
 `;
@@ -25,7 +26,7 @@ const ListWrapper = styled.div`
       margin-left: 20px;
     }
 
-    @media screen and (max-width: 720px) {
+    @media screen and (max-width: ${SCREEN_SIZES.SM}) {
       &:nth-child(3n), &:nth-child(3n - 1) {
         margin-left: 0px;
       }

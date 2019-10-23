@@ -4,6 +4,7 @@ import {
   Switch,
   Route
 } from "react-router-dom";
+import { SCREEN_SIZES } from './common';
 import MenuComponent from './components/menu';
 import styled from 'styled-components';
 import TransactionsPage from './pages/transactions';
@@ -21,11 +22,22 @@ const PagesWrapper = styled.div`
   height: 100%;
   overflow: auto;
   position: relative;
+
+  @media (max-width: ${SCREEN_SIZES.SM}) {
+    width: 100%;
+  }
 `;
 
 const MenuWrapper = styled.div`
   width: 300px;
   height: 100%;
+
+  @media (max-width: ${SCREEN_SIZES.SM}) {
+    position: absolute;
+    left: -300px;
+    top: 0;
+    bottom: 0;
+  }
 `;
 
 class App extends Component {
